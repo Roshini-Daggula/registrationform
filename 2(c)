@@ -1,0 +1,43 @@
+(c) Demonstrate Continuous Integration and Development using Jenkins
+
+Now you’ll set up Jenkins to automatically build/test (and later deploy) your project whenever you push updates to GitHub.
+
+🔧 1. Install Jenkins
+
+Download jenkins.msi from https://www.jenkins.io/download/
+
+Install it → open http://localhost:8080
+
+Unlock using the initial password from:
+
+C:\Program Files (x86)\Jenkins\secrets\initialAdminPassword
+
+
+Install Suggested Plugins
+
+Create Admin user → Continue
+
+🔗 2. Connect Jenkins with GitHub
+
+In Jenkins → New Item → Freestyle Project → name it “RegistrationForm-CI”
+
+Under Source Code Management, select Git
+
+Add your GitHub repo URL:
+
+https://github.com/<your-username>/registration-form.git
+
+
+Under Build Triggers, check ✅
+"GitHub hook trigger for GITScm polling"
+
+Under Build Steps, choose Execute Windows batch command and enter:
+
+echo "Building project..."
+dir
+echo "Build successful!"
+
+
+Click Save, then Build Now
+
+✅ Jenkins will clone your project, run the build steps, and show a green ✅ build.
