@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+</head>
+<body>
+  <h2>Registration Form</h2>
+
+  <form onsubmit="return validateForm()">
+    Name: <input type="text" id="name"><br><br>
+    Email: <input type="email" id="email"><br><br>
+    Phone: <input type="tel" id="phone"><br><br>
+    Password: <input type="password" id="password"><br><br>
+    Confirm Password: <input type="password" id="confirm"><br><br>
+    <input type="submit" value="Register">
+  </form>
+
+  <script>
+    function validateForm() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+      let pass = document.getElementById("password").value;
+      let confirm = document.getElementById("confirm").value;
+
+      if (name == "" || email == "" || phone == "" || pass == "" || confirm == "") {
+        alert("All fields are required!");
+        return false;
+      }
+      if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Phone must be 10 digits!");
+        return false;
+      }
+      if (pass !== confirm) {
+        alert("Passwords do not match!");
+        return false;
+      }
+      alert("Registration Successful!");
+      return true;
+    }
+  </script>
+
+</body>
+</html>
